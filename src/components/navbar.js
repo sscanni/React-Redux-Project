@@ -1,13 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
-import avatar from './img_avatar3.png'
 class NavBar extends React.Component {
 
     render() {
-        //const avatar = './img_avatar3.png'
-        //const avatar = 'http://localhost:3000/src/components/img_avatar3.png'
-        //const avatar = 'https://tylermcginnis.com/would-you-rather/sarah.jpg'
         return (
             <nav className="navbar navbar-expand-sm bg-secondary">
                 <div className="container col-md-6">
@@ -26,38 +22,45 @@ class NavBar extends React.Component {
                             <div className="nav-link pl-4">
                                 <Link className="navlink" to='/'>Leader Board</Link>
                             </div>
-                        </li>                            
+                        </li>
                     </ul>
                     <ul className="navbar-nav navbar-right">
                         <li className="nav-item">
                             <div className="nav-link">
-                                <Link className="navlink navitem" to='/'>Hello, John Doe</Link>
+                                {((this.props.authedUsers)
+                                    ? <Link className="navlink navitem" to='/'>Hello, {this.props.users[this.props.authedUsers].name}</Link>
+                                    : ""
+                                )}
                             </div>
-                        </li>   
+                        </li>
                         <li className="nav-item">
                             <div className="nav-link avatar-div pl-0">
-                                <img src={avatar} alt='John Doe' className='rounded-circle navtar'/> 
+                                {((this.props.authedUsers)
+                                    ? <img src={'/avatars/' + this.props.users[this.props.authedUsers].avatarURL} alt='user' className='rounded-circle navtar' />
+                                    : ""
+                                )}
                             </div>
-                        </li>                         
+                        </li>
                         <li className="nav-item pl-4">
                             <div className="nav-link">
                                 <Link className="navlink navitem" to='/'>Logout</Link>
                             </div>
-                        </li> 
+                        </li>
                     </ul>
                 </div>
             </nav>
-            )
-        }
+        )
     }
-        
-function mapStateToProps({questions, users }) {
+}
+
+function mapStateToProps({ questions, users, authedUsers }) {
     return {
-                questionIds: Object.keys(questions),
-                userIds: Object.keys(users),
-                questions,
-                users
-            }
-        }
-        
+        questionIds: Object.keys(questions),
+        userIds: Object.keys(users),
+        questions,
+        users,
+        authedUsers
+    }
+}
+
 export default connect(mapStateToProps)(NavBar);
