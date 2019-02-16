@@ -19,3 +19,8 @@ width: 40px;
 .avatar-div {
   padding-top: 0px;
 }
+
+.QuestAvatar {
+  height: 80px;
+  width: 80px;
+}

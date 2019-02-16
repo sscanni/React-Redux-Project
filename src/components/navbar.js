@@ -27,18 +27,12 @@ class NavBar extends React.Component {
                     <ul className="navbar-nav navbar-right">
                         <li className="nav-item">
                             <div className="nav-link">
-                                {((this.props.authedUsers)
-                                    ? <Link className="navlink navitem" to='/'>Hello, {this.props.users[this.props.authedUsers].name}</Link>
-                                    : ""
-                                )}
+                                <Link className="navlink navitem" to='/'>Hello, {this.props.users[this.props.authedUser].name}</Link>
                             </div>
                         </li>
                         <li className="nav-item">
                             <div className="nav-link avatar-div pl-0">
-                                {((this.props.authedUsers)
-                                    ? <img src={'/avatars/' + this.props.users[this.props.authedUsers].avatarURL} alt='user' className='rounded-circle navtar' />
-                                    : ""
-                                )}
+                                <img src={'/avatars/' + this.props.users[this.props.authedUser].avatarURL} alt='user' className='rounded-circle navtar' />
                             </div>
                         </li>
                         <li className="nav-item pl-4">
@@ -53,13 +47,13 @@ class NavBar extends React.Component {
     }
 }
 
-function mapStateToProps({ questions, users, authedUsers }) {
+function mapStateToProps({ questions, users, authedUser }) {
     return {
         questionIds: Object.keys(questions),
         userIds: Object.keys(users),
         questions,
         users,
-        authedUsers
+        authedUser
     }
 }
 
