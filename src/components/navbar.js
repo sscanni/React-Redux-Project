@@ -15,19 +15,20 @@ class NavBar extends React.Component {
                         </li>
                         <li className="nav-item">
                             <div className="nav-link pl-4">
-                                <Link className="navlink" to='/'>New Question</Link>
+                                <Link className="navlink" to='/new'>New Question</Link>
                             </div>
                         </li>
                         <li className="nav-item">
                             <div className="nav-link pl-4">
-                                <Link className="navlink" to='/'>Leader Board</Link>
+                                <Link className="navlink" to='/leaders'>Leader Board</Link>
                             </div>
                         </li>
                     </ul>
                     <ul className="navbar-nav navbar-right">
                         <li className="nav-item">
                             <div className="nav-link">
-                                <Link className="navlink navitem" to='/'>Hello, {this.props.users[this.props.authedUser].name}</Link>
+                                {/* <Link className="navlink navitem" to='/'>Hello, {this.props.users[this.props.authedUser].name}</Link> */}
+                                <span className="navlink navitem">Hello, {this.props.users[this.props.authedUser].name}</span>
                             </div>
                         </li>
                         <li className="nav-item">
@@ -37,7 +38,7 @@ class NavBar extends React.Component {
                         </li>
                         <li className="nav-item pl-4">
                             <div className="nav-link">
-                                <Link className="navlink navitem" to='/'>Logout</Link>
+                                <Link className="navlink navitem" to='/login'>Logout</Link>
                             </div>
                         </li>
                     </ul>
