@@ -27,7 +27,6 @@ class NavBar extends React.Component {
                     <ul className="navbar-nav navbar-right">
                         <li className="nav-item">
                             <div className="nav-link">
-                                {/* <Link className="navlink navitem" to='/'>Hello, {this.props.users[this.props.authedUser].name}</Link> */}
                                 <span className="navlink navitem">Hello, {this.props.users[this.props.authedUser].name}</span>
                             </div>
                         </li>
@@ -48,11 +47,8 @@ class NavBar extends React.Component {
     }
 }
 
-function mapStateToProps({ questions, users, authedUser }) {
+function mapStateToProps({ users, authedUser }) {
     return {
-        questionIds: Object.keys(questions),
-        userIds: Object.keys(users),
-        questions,
         users,
         authedUser
     }
