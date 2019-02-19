@@ -15,12 +15,12 @@ class NavBar extends React.Component {
                         </li>
                         <li className="nav-item">
                             <div className="nav-link pl-4">
-                                <Link className="navlink" to='/new'>New Question</Link>
+                                <Link className="navlink" to='/add'>New Question</Link>
                             </div>
                         </li>
                         <li className="nav-item">
                             <div className="nav-link pl-4">
-                                <Link className="navlink" to='/leaders'>Leader Board</Link>
+                                <Link className="navlink" to='/leaderboard'>Leader Board</Link>
                             </div>
                         </li>
                     </ul>

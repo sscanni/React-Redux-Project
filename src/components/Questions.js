@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux'
 
-class Answered extends React.Component {
+class Questions extends React.Component {
 
     viewPoll = (e, id) => {
         e.preventDefault()
@@ -38,4 +38,4 @@ function mapStateToProps({ questions, users }) {
     }
 }
 
-export default connect(mapStateToProps)(Answered);
+export default connect(mapStateToProps)(Questions);
