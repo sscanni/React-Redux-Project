@@ -4,8 +4,8 @@ import { receiveQuestions } from '../actions/questions'
 import { setAuthedUser } from '../actions/authedUser'
 
 //const AUTHED_ID = 'tylermcginnis'
-const AUTHED_ID = 'sarahedo'
 //const AUTHED_ID = 'johndoe'
+const AUTHED_ID = 'sarahedo'
 
 // This uses the redux Thunk pattern
 export function handleInitialData () {
