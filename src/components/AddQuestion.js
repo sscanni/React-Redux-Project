@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux'
+import { Link } from 'react-router-dom'
 
 class NewQuestion extends React.Component {
 
@@ -7,17 +8,28 @@ class NewQuestion extends React.Component {
         return (
             <div>
                 <div className="container col-md-4 mt-3">
-                    <p>New Questions</p>
-                    <ul>
-                        {this.props.questionIds.map((id) => (
-                            <li key={id}>
-                                <div>{this.props.users[this.props.questions[id].author].name} asks...</div>
-                                <div>{this.props.questions[id].optionOne.text}</div>
-                                <div>{this.props.questions[id].optionTwo.text}</div>
-                                <hr></hr>
-                            </li>
-                        ))}
-                    </ul>
+                    <div className="card-body">
+                        <div class="card">
+                            <h4 className="card-header text-center">Create New Question</h4>
+                            <div className="card-body">
+                                <p>Complete the question</p>
+                                <h5>Would You Rather ...</h5><br></br>
+                                <div className="form-group">
+                                    <input type="text" className="form-control" id=""></input>
+                                </div>
+                                <strong>
+                                    <p className="text-center">OR</p>
+                                </strong>
+                                <div className="form-group">
+                                    <input type="text" className="form-control" id=""></input>
+                                </div>                
+                                {/* <a href="index.html" className="btn btn-outline-primary btn-sm btn-block">Submit</a> */}
+                                <Link to='/'>
+                                    <button className="btn btn-outline-primary btn-sm btn-block">Submit</button>
+                                </Link>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         )

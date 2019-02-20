@@ -25,6 +25,7 @@ class Login extends React.Component {
         if (userid) {
             this.props.dispatch(setAuthedUser(userid))
         }
+        this.props.history.push('/')
     }
     render() {
         return (

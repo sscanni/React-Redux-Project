@@ -4,21 +4,20 @@ import { connect } from 'react-redux'
 
 class Home extends React.Component {
 
-    // componentDidMount() {
-
-    //     if (this.checkForUnAnswered()) {
-    //         console.log(this.props.authedUser, "has unanswered questions.")
-    //     } else {
-    //         console.log(this.props.authedUser, "answered all questions.")
-    //     }
-    // }
-    // checkForUnAnswered () {
-    //     if (Object.keys(this.props.users[this.props.authedUser].answers).length !== this.props.questionIds.length) {
-    //         return true
-    //     } else {
-    //         return false
-    //     }
-    // }
+    componentDidMount() {
+        if (this.checkForUnAnswered()) {
+            console.log(this.props.authedUser, "has unanswered questions.")
+        } else {
+            console.log(this.props.authedUser, "answered all questions.")
+        }
+    }
+    checkForUnAnswered () {
+        if (Object.keys(this.props.users[this.props.authedUser].answers).length === this.props.questionIds.length) {
+            return true
+        } else {
+            return false
+        }
+    }
 
     render() {
         return (
@@ -28,26 +27,25 @@ class Home extends React.Component {
                         <div className="card-header">
                             <ul className="nav nav-tabs nav-fill card-header-tabs">
                                 <li className="nav-item">
-                                    <div className="nav-link active">
-                                        {/* <Link to='/'>Unanswered Questions</Link> */}
-                                        <span>Unanswered Questions</span>
+                                    <div className="nav-link">
+                                        <Link to='/'>Unanswered Questions</Link>
                                     </div>
                                 </li>
                                 <li className="nav-item">
-                                    <div className="nav-link">
-                                        <Link to='/answered'>Answered Questions</Link>
+                                    <div className="nav-link active">
+                                        <span>Answered Questions</span>
                                     </div>
                                 </li>
                             </ul>
                         </div>
                         <div className="card-body">
-                            {((Object.keys(this.props.users[this.props.authedUser].answers).length !== this.props.questionIds.length) 
+                            {((Object.keys(this.props.users[this.props.authedUser].answers).length > 0) 
                             ? <div>
                                 {this.props.questionIds.map((id) => (
                                     <div key={id}>
                                         {(
-                                        this.props.questions[id].optionOne.votes.findIndex(vote => vote === this.props.authedUser) === -1 && 
-                                        this.props.questions[id].optionTwo.votes.findIndex(vote => vote === this.props.authedUser) === -1) && (
+                                        this.props.questions[id].optionOne.votes.findIndex(vote => vote === this.props.authedUser) > -1 ||
+                                        this.props.questions[id].optionTwo.votes.findIndex(vote => vote === this.props.authedUser) > -1) && (
                                             <div>
                                                 <div className="card">
                                                     <h5 className="card-header">{this.props.users[this.props.questions[id].author].name} asks:</h5>
@@ -73,7 +71,7 @@ class Home extends React.Component {
                                     </div>
                                 ))}
                                 </div>
-                            :   <h4>No Unanswered Questions</h4>                                
+                            :   <h4>No Answered Questions</h4>                                
                             )}
                         </div>
                     </div>
