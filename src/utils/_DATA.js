@@ -172,7 +172,15 @@ export function _saveQuestion (question) {
 }
 
 export function _saveQuestionAnswer ({ authedUser, qid, answer }) {
+  // console.log("_saveQuestionAnswer: authedUser=", authedUser)
+  // console.log("_saveQuestionAnswer: qid=", qid)
+  // console.log("_saveQuestionAnswer: answer=", answer)
   return new Promise((res, rej) => {
+    const question = {
+      qid,
+      authedUser,
+      answer
+    }
     setTimeout(() => {
       users = {
         ...users,
@@ -195,8 +203,9 @@ export function _saveQuestionAnswer ({ authedUser, qid, answer }) {
           }
         }
       }
-
-      res()
+      // console.log("_saveQuestionAnswer: users=", users)
+      // console.log("_saveQuestionAnswer: questions=", questions)
+      res(question)
     }, 500)
   })
 }

@@ -4,12 +4,21 @@ import { Link } from 'react-router-dom'
 
 class NewQuestion extends React.Component {
 
+    addQuestion = (e) => {
+        e.preventDefault()
+        // const { userid } = this.state
+        // if (userid) {
+        //     this.props.dispatch(setAuthedUser(userid))
+        // }
+        this.props.history.push('/')
+    }
+
     render() {
         return (
             <div>
                 <div className="container col-md-4 mt-3">
                     <div className="card-body">
-                        <div class="card">
+                        <div className="card">
                             <h4 className="card-header text-center">Create New Question</h4>
                             <div className="card-body">
                                 <p>Complete the question</p>
@@ -24,7 +33,7 @@ class NewQuestion extends React.Component {
                                     <input type="text" className="form-control" id=""></input>
                                 </div>                
                                 {/* <a href="index.html" className="btn btn-outline-primary btn-sm btn-block">Submit</a> */}
-                                <Link to='/'>
+                                <Link to="" onClick={(e) => this.addQuestion(e)}>
                                     <button className="btn btn-outline-primary btn-sm btn-block">Submit</button>
                                 </Link>
                             </div>

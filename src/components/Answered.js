@@ -6,9 +6,9 @@ class Home extends React.Component {
 
     componentDidMount() {
         if (this.checkForUnAnswered()) {
-            console.log(this.props.authedUser, "has unanswered questions.")
+            //console.log(this.props.authedUser, "has unanswered questions.")
         } else {
-            console.log(this.props.authedUser, "answered all questions.")
+            //console.log(this.props.authedUser, "answered all questions.")
         }
     }
     checkForUnAnswered () {
@@ -58,7 +58,7 @@ class Home extends React.Component {
                                                             <div className="pl-3 media-body border border-top-0 border-bottom-0 border-right-0">
                                                                 <h5>Would you rather</h5>
                                                                 <p>...{this.props.questions[id].optionOne.text} ...</p>
-                                                                <Link to={`/questions/${id}`}>
+                                                                <Link to={`/results/${id}`}>
                                                                     <button className="btn btn-outline-primary btn-sm btn-block">View Poll</button>
                                                                 </Link>
                                                             </div>

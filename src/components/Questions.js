@@ -1,16 +1,23 @@
 import React from 'react';
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
+import { handleAnsQuest } from '../actions/questions'
 
 class Questions extends React.Component {
 
-    checkRadio = (e) => {
+    checkRadio = (e, id) => {
         e.preventDefault()
+
+        let answer
         if(document.getElementById('one').checked) {
-            alert("fisrt selected")
-        } else if(document.getElementById('two').checked) {
-            alert("second selected")
+            answer = "optionOne"
+        } else if (document.getElementById('two').checked) {
+            answer = "optionTwo"
         }
+        const { dispatch } = this.props
+        dispatch(handleAnsQuest(this.props.authedUser, id, answer))
+
+        this.props.history.push(`/results/${id}`)
     }
     render() {
         const { id } = this.props
@@ -30,22 +37,22 @@ class Questions extends React.Component {
                                         (this.props.questions[id].optionOne.votes.findIndex(vote => vote === this.props.authedUser) === -1 && 
                                         this.props.questions[id].optionTwo.votes.findIndex(vote => vote === this.props.authedUser) === -1) ||
                                         this.props.questions[id].optionOne.votes.findIndex(vote => vote === this.props.authedUser) > -1
-                                        ? <input id="one" value="one" name="poll" type="radio" defaultChecked />
-                                        : <input id="one" value="one" name="poll" type="radio"/>
+                                            ? <input id="one" value="one" name="poll" type="radio" defaultChecked />
+                                            : <input id="one" value="one" name="poll" type="radio"/>
                                         }
                                         <strong> {this.props.questions[id].optionOne.text}</strong>
                                         <br></br>
                                         <br></br>
                                         {
                                         this.props.questions[id].optionTwo.votes.findIndex(vote => vote === this.props.authedUser) > -1
-                                        ? <input id="two" value="two" name="poll" type="radio" defaultChecked />
-                                        : <input id="two" value="two" name="poll" type="radio"/>
+                                            ? <input id="two" value="two" name="poll" type="radio" defaultChecked />
+                                            : <input id="two" value="two" name="poll" type="radio"/>
                                         }
                                         <strong> {this.props.questions[id].optionTwo.text}</strong>
                                         <br></br>
                                         <br></br>
                                     </div>
-                                    <Link to="" onClick={(e) => this.checkRadio(e)}>
+                                    <Link to="" onClick={(e) => this.checkRadio(e, id)}>
                                         <button className="btn btn-outline-primary btn-sm btn-block">Submit</button>
                                     </Link>
                                 </div>
