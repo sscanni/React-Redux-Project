@@ -2,7 +2,7 @@ import React, { Component, Fragment } from 'react'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { handleInitialData } from '../actions/shared'
-// import LoadingBar from 'react-redux-loading'
+import LoadingBar from 'react-redux-loading'
 import Home from './Home'
 import Answered from './Answered'
 import Results from './Results'
@@ -21,7 +21,7 @@ class App extends Component {
     return (
       <Router>
         <Fragment>
-          {/* <LoadingBar /> */}
+          <LoadingBar />
           {/* <div className='container'> */}
             {/* <Nav /> */}
             {this.props.loading === true

@@ -1,16 +1,23 @@
 import React from 'react';
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
+import { handleAddQuest } from '../actions/questions'
 
 class NewQuestion extends React.Component {
 
     addQuestion = (e) => {
         e.preventDefault()
-        // const { userid } = this.state
-        // if (userid) {
-        //     this.props.dispatch(setAuthedUser(userid))
-        // }
-        this.props.history.push('/')
+
+        const optionOneText = document.getElementById('question1').value
+        const optionTwoText = document.getElementById('question2').value
+
+        if (optionOneText.trim() !== '' && optionTwoText.trim() !== '') {
+            const { dispatch } = this.props
+            dispatch(handleAddQuest(this.props.authedUser, optionOneText, optionTwoText))
+            this.props.history.push('/')
+        } else {
+            alert ("Both questions must be entered. Please try again.")
+        }
     }
 
     render() {
@@ -24,13 +31,13 @@ class NewQuestion extends React.Component {
                                 <p>Complete the question</p>
                                 <h5>Would You Rather ...</h5><br></br>
                                 <div className="form-group">
-                                    <input type="text" className="form-control" id=""></input>
+                                    <input type="text" className="form-control" id="question1"></input>
                                 </div>
                                 <strong>
                                     <p className="text-center">OR</p>
                                 </strong>
                                 <div className="form-group">
-                                    <input type="text" className="form-control" id=""></input>
+                                    <input type="text" className="form-control" id="question2"></input>
                                 </div>                
                                 {/* <a href="index.html" className="btn btn-outline-primary btn-sm btn-block">Submit</a> */}
                                 <Link to="" onClick={(e) => this.addQuestion(e)}>
@@ -45,12 +52,13 @@ class NewQuestion extends React.Component {
     }
 }
 
-function mapStateToProps({ questions, users }) {
+function mapStateToProps({ questions, users, authedUser }) {
     return {
         questionIds: Object.keys(questions),
         userIds: Object.keys(users),
         questions,
-        users
+        users,
+        authedUser
     }
 }
 
