@@ -1,4 +1,5 @@
 import { saveQuestionAnswer } from '../utils/api'
+import { ansQuestUser } from '../actions/users'
 
 export const RECEIVE_QUESTIONS = 'RECEIVE_QUESTIONS'
 export const ANSWER_QUESTION = 'ANSWER_QUESTION'
@@ -11,7 +12,6 @@ export function receiveQuestions(questions) {
     }
 }
 export function ansQuestion(question) {
-    console.log("ansQuestion action question=", question)
     return {
         type: ANSWER_QUESTION,
         question,
@@ -26,8 +26,10 @@ export function handleAnsQuest(authedUser, qid, answer) {
             qid,
             answer
         })  
-            .then((question) => dispatch(ansQuestion(question)))
-            // .then((users) => dispatch(ansQuestUser(users)))
+            .then((question) => {
+                dispatch(ansQuestion(question))
+                dispatch(ansQuestUser(question))
             // .then(() => dispatch(hideLoading()))
-    }
+            })
+        }
 }

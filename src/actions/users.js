@@ -8,9 +8,9 @@ export function receiveUsers (users) {
         users,
     }
 }
-export function ansQuestUser(user) {
+export function ansQuestUser(question) {
     return {
         type: ANSWER_QUESTION_USER,
-        user,
+        question,
     }
 }

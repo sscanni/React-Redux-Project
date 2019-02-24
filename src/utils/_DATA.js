@@ -172,9 +172,6 @@ export function _saveQuestion (question) {
 }
 
 export function _saveQuestionAnswer ({ authedUser, qid, answer }) {
-  // console.log("_saveQuestionAnswer: authedUser=", authedUser)
-  // console.log("_saveQuestionAnswer: qid=", qid)
-  // console.log("_saveQuestionAnswer: answer=", answer)
   return new Promise((res, rej) => {
     const question = {
       qid,
@@ -203,8 +200,6 @@ export function _saveQuestionAnswer ({ authedUser, qid, answer }) {
           }
         }
       }
-      // console.log("_saveQuestionAnswer: users=", users)
-      // console.log("_saveQuestionAnswer: questions=", questions)
       res(question)
     }, 500)
   })

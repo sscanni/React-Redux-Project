@@ -6,9 +6,9 @@ class Home extends React.Component {
 
     componentDidMount() {
         if (this.checkForUnAnswered()) {
-            //console.log(this.props.authedUser, "has unanswered questions.")
+            console.log(this.props.authedUser, "has unanswered questions.")
         } else {
-            //console.log(this.props.authedUser, "answered all questions.")
+            console.log(this.props.authedUser, "answered all questions.")
         }
     }
     checkForUnAnswered () {
