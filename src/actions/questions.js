@@ -1,6 +1,6 @@
 import { saveQuestionAnswer } from '../utils/api'
 import { saveQuestion } from '../utils/api'
-//import { ansQuestUser } from '../actions/users'
+import { ansQuestUser } from '../actions/users'
 import { showLoading, hideLoading } from 'react-redux-loading'
 
 export const RECEIVE_QUESTIONS = 'RECEIVE_QUESTIONS'
@@ -29,38 +29,42 @@ export function addQuestion(question) {
 export function handleAnsQuest(authedUser, qid, answer) {
     return (dispatch) => {
 
-        dispatch(showLoading())
+        //dispatch(showLoading())
 
         return saveQuestionAnswer({
             authedUser,
             qid,
             answer
         })  
+            .then((question) => {
+                dispatch(ansQuestion(question))
+                dispatch(ansQuestUser(question))
+                dispatch(hideLoading())
+            })
+
             // .then((question) => {
             //     dispatch(ansQuestion(question))
-            //     dispatch(ansQuestUser(question))
-            //     dispatch(hideLoading())
-            // // .then(() => dispatch(hideLoading()))
+            //     console.log("promise: question=", question)
+            //     return question
             // })
-            .then((question) => dispatch(ansQuestion(question)))
-            .then(() => dispatch(hideLoading()))
+            // .then((question) => {
+            //     dispatch(ansQuestUser(question))
+            // })
+            // .then(() => dispatch(hideLoading()))
         }
 }
 
 export function handleAddQuest(author, optionOneText, optionTwoText) {
-    console.log("handleAddQuest: optionOneText=", optionOneText)
-    console.log("handleAddQuest: optionTwoText=", optionTwoText)
-    console.log("handleAddQuest: author=", author)
     return (dispatch) => {
 
-        dispatch(showLoading())
+    dispatch(showLoading())
 
-        return saveQuestion({
-            author,
-            optionOneText,
-            optionTwoText
-        })  
-            .then((question) => dispatch(addQuestion(question)))
-            .then(() => dispatch(hideLoading()))
-        }
+    return saveQuestion({
+        author,
+        optionOneText,
+        optionTwoText
+    })  
+        .then((question) => dispatch(addQuestion(question)))
+        .then(() => dispatch(hideLoading()))
+    }
 }

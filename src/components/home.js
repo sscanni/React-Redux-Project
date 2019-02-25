@@ -4,25 +4,6 @@ import { connect } from 'react-redux'
 
 class Home extends React.Component {
 
-    componentDidMount() {
-        //  console.log("did mount")
-        //  console.table(this.props.questions)
-        //  console.table(this.props.users)
-
-    //     if (this.checkForUnAnswered()) {
-    //         console.log(this.props.authedUser, "has unanswered questions.")
-    //     } else {
-    //         console.log(this.props.authedUser, "answered all questions.")
-    //     }
-    }
-    // checkForUnAnswered () {
-    //     if (Object.keys(this.props.users[this.props.authedUser].answers).length !== this.props.questionIds.length) {
-    //         return true
-    //     } else {
-    //         return false
-    //     }
-    // }
-
     render() {
         return (
             <div>
