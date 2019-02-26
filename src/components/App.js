@@ -21,13 +21,13 @@ class App extends Component {
     return (
       <Router>
         <Fragment>
-          <LoadingBar />
-          {/* <div className='container'> */}
-            {/* <Nav /> */}
+          {/* <LoadingBar /> */}
+          {/* <div className='container-fluid'>  */}
+            <NavBar /> 
+            <LoadingBar />
             {this.props.loading === true
               ? null
               : <div>
-                  <NavBar />
                   <Route path='/' exact component={Home} />
                   <Route path='/answered' component={Answered} />
                   <Route path='/results/:id' component={Results} />

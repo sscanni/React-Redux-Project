@@ -10,7 +10,14 @@ class NavBar extends React.Component {
                     <ul className="navbar-nav">
                         <li className="nav-item active">
                             <div className="nav-link">
+                            {(this.props.authedUser)                             
+                            ? <div>
                                 <Link className="navlink" to='/'>Home</Link>
+                            </div>
+                            : <div>
+                                <p className="navLabel">Home</p>
+                            </div>
+                            }
                             </div>
                         </li>
                         <li className="nav-item">
@@ -25,16 +32,20 @@ class NavBar extends React.Component {
                         </li>
                     </ul>
                     <ul className="navbar-nav navbar-right">
+                        {this.props.authedUser && 
                         <li className="nav-item">
                             <div className="nav-link">
                                 <span className="navlink navitem">Hello, {this.props.users[this.props.authedUser].name}</span>
                             </div>
                         </li>
+                        }
+                        {this.props.authedUser && 
                         <li className="nav-item">
                             <div className="nav-link avatar-div pl-0">
                                 <img src={'/avatars/' + this.props.users[this.props.authedUser].avatarURL} alt='user' className='rounded-circle navtar' />
                             </div>
                         </li>
+                        }
                         <li className="nav-item pl-4">
                             <div className="nav-link">
                                 <Link className="navlink navitem" to='/login'>Logout</Link>

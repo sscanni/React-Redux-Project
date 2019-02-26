@@ -5,9 +5,9 @@ const logger = (store) => (next) => (action) => {
         // console.log('The new state: ', store.getState())
 
         const {authedUser, users, questions} = store.getState()
-        console.log("authedUser=", authedUser)
-        console.log("users=", users)
-        console.log("questions=", questions)
+        console.log("new state: authedUser=", authedUser)
+        console.log("new state: users=", users)
+        console.log("new state: questions=", questions)
         
     // console.groupEnd()
     return returnValue

@@ -73,3 +73,11 @@ top: 0px;
 left: 0px;
 z-index: 1;
 }
+
+.navLabel {
+  color: white;
+}
+
+.center {
+  text-align: center
+}

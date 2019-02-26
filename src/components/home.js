@@ -55,8 +55,11 @@ class Home extends React.Component {
                                         )}
                                     </div>
                                 ))}
+                            </div >
+                            : <div className="center">
+                                <br></br>
+                                <h4>No unanswered questions found.</h4>  
                             </div>
-                            :   <h4>No Unanswered Questions</h4>                                
                             )}
                         </div>
                     </div>

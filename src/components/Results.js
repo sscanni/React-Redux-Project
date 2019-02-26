@@ -6,6 +6,14 @@ class Results extends React.Component {
     render() {
         const { id } = this.props
 
+        if (!(id in this.props.questions)) {
+            return (
+                <div className="container col-md-2 mt-3">
+                    <h3>Question not found</h3>
+                </div>   
+            )
+        }
+
         const total = this.props.questions[id].optionOne.votes.length + this.props.questions[id].optionTwo.votes.length
 
         const opOneVotes = this.props.questions[id].optionOne.votes.length
@@ -14,8 +22,13 @@ class Results extends React.Component {
         const opOnePercent = (opOneVotes / total).toFixed(2) * 100
         const opTwoPercent = (opTwoVotes / total).toFixed(2) * 100
 
-        const opOneDispPerc = opOnePercent + "%"
-        const opTwoDispPerc = opTwoPercent + "%"
+        let opOneDispPerc = ""
+        let opTwoDispPerc = ""
+
+        if (opOnePercent > 0 || opTwoPercent > 0) {
+            opOneDispPerc = opOnePercent.toFixed(0) + "%"
+            opTwoDispPerc = opTwoPercent.toFixed(0) + "%"
+        }
 
         let opOneColor = "white"
         if (opOnePercent === 0) {
