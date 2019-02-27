@@ -21,8 +21,6 @@ class App extends Component {
     return (
       <Router>
         <Fragment>
-          {/* <LoadingBar /> */}
-          {/* <div className='container-fluid'>  */}
             <NavBar /> 
             <LoadingBar />
             {this.props.loading === true
@@ -36,7 +34,6 @@ class App extends Component {
                   <Route path='/leaderboard' component={LeaderBoard} />                  
                   <Route path='/login' component={Login} />                  
                 </div>}
-          {/* </div> */}
         </Fragment>
       </Router>
     )
