@@ -72,7 +72,8 @@ class Home extends React.Component {
 
 function mapStateToProps({ questions, users, authedUser }) {
     return {
-        questionIds: Object.keys(questions),
+        questionIds: Object.keys(questions)
+        .sort((a,b) => questions[b].timestamp - questions[a].timestamp),        
         userIds: Object.keys(users),
         questions,
         users,

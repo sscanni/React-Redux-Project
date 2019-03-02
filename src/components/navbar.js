@@ -11,9 +11,6 @@ class NavBar extends React.Component {
                     <ul className="navbar-nav">
                         <li className="nav-item active">
                             <div className="nav-link">
-                                {/* {this.props.authedUser && 
-                                    <Link className="navlink" to='/'>Home</Link>
-                                } */}
                                 {(this.props.authedUser)                             
                                 ? <div>
                                     <Link className="navlink" to='/'>Home</Link>
@@ -62,9 +59,6 @@ class NavBar extends React.Component {
                         }
                         <li className="nav-item pl-4">
                             <div className="nav-link">
-                                {/* {this.props.authedUser && 
-                                    <Link className="navlink navitem"  to='/login'>Logout</Link>
-                                } */}
                                 {(this.props.authedUser)                             
                                 ? <div>
                                     <Link className="navlink navitem"  to='/login'>Logout</Link>
