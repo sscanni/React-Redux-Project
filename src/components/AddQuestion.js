@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { handleAddQuest } from '../actions/questions'
+import { Redirect } from 'react-router-dom'
 
 class NewQuestion extends React.Component {
 
@@ -21,6 +22,9 @@ class NewQuestion extends React.Component {
     }
 
     render() {
+        if (this.props.authedUser === null) {
+            return <Redirect to='/login' />
+        }
         return (
             <div>
                 <div className="container col-md-4 mt-3">

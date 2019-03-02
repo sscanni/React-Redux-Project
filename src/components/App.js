@@ -40,9 +40,9 @@ class App extends Component {
   }
 }
 
-function mapStateToProps ({ authedUser }) {
+function mapStateToProps ({ loadFlag }) {
   return {
-    loading: authedUser === null
+    loading: loadFlag === null
   }
 }
 

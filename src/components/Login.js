@@ -28,6 +28,11 @@ class Login extends React.Component {
         this.props.history.push('/')
     }
     render() {
+
+        const aUser = null
+        const { dispatch } = this.props
+        dispatch(setAuthedUser(aUser))
+
         return (
             <div className="container col-md-4 mt-3">
                 <div className="card-body">

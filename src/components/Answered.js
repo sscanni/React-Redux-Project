@@ -1,9 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
+import { Redirect } from 'react-router-dom'
 
 class Home extends React.Component {
     render() {
+        if (this.props.authedUser === null) {
+            return <Redirect to='/login' />
+        }
         return (
             <div>
                 <div className="container col-md-4 mt-3">

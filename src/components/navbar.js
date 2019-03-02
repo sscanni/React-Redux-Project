@@ -2,33 +2,41 @@ import React from 'react';
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 class NavBar extends React.Component {
-
+    
     render() {
+        
         return (
             <nav className="navbar navbar-expand-sm bg-secondary">
                 <div className="container col-md-6">
                     <ul className="navbar-nav">
                         <li className="nav-item active">
                             <div className="nav-link">
-                            {(this.props.authedUser)                             
-                            ? <div>
-                                <Link className="navlink" to='/'>Home</Link>
-                            </div>
-                            : <div>
-                                <p className="navLabel">Home</p>
-                            </div>
-                            }
+                                {this.props.authedUser && 
+                                    <Link className="navlink" to='/'>Home</Link>
+                                }
+                                {/* {(this.props.authedUser)                             
+                                ? <div>
+                                    <Link className="navlink" to='/'>Home</Link>
+                                </div>
+                                : <div>
+                                    <Link className="navlink" to='/login'>Home</Link>
+                                </div>
+                                } */}
                             </div>
                         </li>
                         <li className="nav-item">
+                            {this.props.authedUser && 
                             <div className="nav-link pl-4">
                                 <Link className="navlink" to='/add'>New Question</Link>
                             </div>
+                            }
                         </li>
                         <li className="nav-item">
+                            {this.props.authedUser && 
                             <div className="nav-link pl-4">
                                 <Link className="navlink" to='/leaderboard'>Leader Board</Link>
                             </div>
+                            }
                         </li>
                     </ul>
                     <ul className="navbar-nav navbar-right">
@@ -48,7 +56,17 @@ class NavBar extends React.Component {
                         }
                         <li className="nav-item pl-4">
                             <div className="nav-link">
-                                <Link className="navlink navitem" to='/login'>Logout</Link>
+                                {this.props.authedUser && 
+                                    <Link className="navlink navitem"  to='/login'>Logout</Link>
+                                }
+                                {/* {(this.props.authedUser)                             
+                                ? <div>
+                                    <Link className="navlink navitem"  to='/login'>Logout</Link>
+                                </div>
+                                : <div>
+                                    <Link className="navlink navitem"  to='/login'>Login</Link>
+                                </div>
+                                } */}
                             </div>
                         </li>
                     </ul>

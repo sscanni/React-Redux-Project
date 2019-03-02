@@ -46,9 +46,6 @@ class Results extends React.Component {
             {width: opTwoPercent + "%"
             ,color: opTwoColor}
 
-        //TO DO:
-        //Maybe change the entire website to use col-md-5 instead of col-md-4
-
         return (
             <div className="container col-md-4 mt-3">
                 <div className="card-body">

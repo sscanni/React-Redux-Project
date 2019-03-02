@@ -20,6 +20,7 @@ class Questions extends React.Component {
         this.props.history.push(`/results/${id}`)
     }
     render() {
+
         const { id } = this.props
         return (
             <div className="container col-md-4 mt-3">
