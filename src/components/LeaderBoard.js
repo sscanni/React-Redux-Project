@@ -12,45 +12,63 @@ class LeaderBoard extends React.Component {
 
         return (
             <div className="container col-md-4 mt-3">
-                <div className="card">
-                    <div className="card-body">
-                        <div className="media">
-                            <div className="trophy-background">
-                                <span className="trophy "><i className='fas fa-trophy' style={{trophyOneStyle}}></i></span>
-                            </div>
-                            {/* <img src="img_avatar3.png" alt="John Doe" className="mr-3 mt-3 rounded-circle" style={{imageStyle}}></img> */}
-                            <div className="pl-3 media-body border border-top-0 border-bottom-0 border-right-0">
-                                <h3><strong>John Doe</strong></h3>
-                                <br></br>
-                                <strong>
-                                    <div className="float-left">Answered questions:</div>
-                                    <div className="float-right pr-5">5</div><br></br><br></br>
-
-                                    <div className="float-left">Created questions:</div>
-                                    <div className="float-right pr-5">5</div><br></br><br></br>
-                                </strong>
-                            </div>
-                            <div className="card">
-                                <div className="card-header">
-                                    <p className="text-center"><strong>Score</strong></p>
+                {this.props.userIds.slice(0, 3).map((id) => (
+                <div key={id}>
+                    <div className="card">
+                        <div className="card-body">
+                            <div className="media">
+                                <div className="trophy-background">
+                                    <span className="trophy "><i className='fas fa-trophy' style={{trophyOneStyle}}></i></span>
                                 </div>
-                                <div className="card-body">
-                                    <p className="text-center"><strong>5</strong></p>
+                                <div className="nav-link avatar-div pl-0">
+                                    <img className='ml-3 mr-3 mt-3 mb-3 rounded-circle QuestAvatar' 
+                                        src={'/avatars/' + this.props.users[id].avatarURL} alt='user' />
+                                </div>
+                                <div className="pl-3 media-body border border-top-0 border-bottom-0 border-right-0">
+                                    <h3><strong>{this.props.users[id].name}</strong></h3>
+                                    <br></br>
+                                    <strong>
+                                        <div className="float-left">Answered questions:</div>
+                                        <div className="float-right pr-5">{Object.keys(this.props.users[id].answers).length}</div><br></br><br></br>
+
+                                        <div className="float-left">Created questions:</div>
+                                        <div className="float-right pr-5">{Object.keys(this.props.users[id].questions).length}</div><br></br><br></br>
+                                    </strong>
+                                </div>
+                                <div className="card">
+                                    <div className="card-header">
+                                        <p className="text-center"><strong>Score</strong></p>
+                                    </div>
+                                    <div className="card-body">
+                                        <p className="text-center mt-3">
+                                        <strong>
+                                            {Object.keys(this.props.users[id].answers).length + 
+                                            Object.keys(this.props.users[id].questions).length} 
+                                        </strong>
+                                        </p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    <br></br>
                 </div>
-                <br></br>
+                ))}
             </div>
         )
     }
 }
 
-function mapStateToProps({ questions, users }) {
+function mapStateToProps({ questions, users, authedUser}) {
+
     return {
         questionIds: Object.keys(questions),
-        userIds: Object.keys(users),
+        userIds: Object.keys(users).sort((a,b) => 
+            (Object.keys(users[b].answers).length + 
+            Object.keys(users[b].questions).length)
+            - 
+            (Object.keys(users[a].answers).length + 
+            Object.keys(users[a].questions).length)),
         questions,
         users
     }
