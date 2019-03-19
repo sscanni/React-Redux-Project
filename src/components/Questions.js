@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
+import { Redirect } from 'react-router-dom'
 import { handleAnsQuest } from '../actions/questions'
 
 class Questions extends React.Component {
@@ -20,7 +21,9 @@ class Questions extends React.Component {
         this.props.history.push(`/results/${id}`)
     }
     render() {
-
+        if (this.props.authedUser === null) {
+            return <Redirect to='/login' />
+        }
         const { id } = this.props
         return (
             <div className="container col-md-4 mt-3">

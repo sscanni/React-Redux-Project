@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux'
+import { Redirect } from 'react-router-dom'
 
 class LeaderBoard extends React.Component {
 
@@ -10,6 +11,9 @@ class LeaderBoard extends React.Component {
         // const imageStyle = 
         //     {width: "100px"}
 
+        if (this.props.authedUser === null) {
+            return <Redirect to='/login' />
+        }
         return (
             <div className="container col-md-4 mt-3">
                 {this.props.userIds.slice(0, 3).map((id) => (
@@ -63,14 +67,15 @@ function mapStateToProps({ questions, users, authedUser}) {
 
     return {
         questionIds: Object.keys(questions),
-        userIds: Object.keys(users).sort((a,b) => 
+        userIds: Object.keys(users).sort((a,b) =>           
             (Object.keys(users[b].answers).length + 
             Object.keys(users[b].questions).length)
             - 
             (Object.keys(users[a].answers).length + 
             Object.keys(users[a].questions).length)),
         questions,
-        users
+        users,
+        authedUser
     }
 }
 

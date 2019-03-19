@@ -6,7 +6,6 @@ import { Redirect } from 'react-router-dom'
 class Home extends React.Component {
 
     render() {
-
         if (this.props.authedUser === null) {
             return <Redirect to='/login' />
         }

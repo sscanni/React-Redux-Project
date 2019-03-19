@@ -1,9 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux'
+import { Redirect } from 'react-router-dom'
 
 class Results extends React.Component {
 
     render() {
+        if (this.props.authedUser === null) {
+            return <Redirect to='/login' />
+        }
         const { id } = this.props
 
         if (!(id in this.props.questions)) {
@@ -45,7 +49,7 @@ class Results extends React.Component {
         const opTwoStyle = 
             {width: opTwoPercent + "%"
             ,color: opTwoColor}
-
+    
         return (
             <div className="container col-md-4 mt-3">
                 <div className="card-body">
