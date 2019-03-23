@@ -6,23 +6,20 @@ class LeaderBoard extends React.Component {
 
     render() {
 
-        const trophyOneStyle = 
-            {color: "rgb(197, 168, 0)"}
-        // const imageStyle = 
-        //     {width: "100px"}
+        const trophyColor = ["color: rgb(197, 168, 0)", "color: rgb(0, 128, 0)", "color: rgb(160, 82, 45)" ]
 
         if (this.props.authedUser === null) {
             return <Redirect to='/login' />
         }
         return (
             <div className="container col-md-4 mt-3">
-                {this.props.userIds.slice(0, 3).map((id) => (
+                {this.props.userIds.slice(0, 3).map((id, x) => (
                 <div key={id}>
                     <div className="card">
                         <div className="card-body">
                             <div className="media">
                                 <div className="trophy-background">
-                                    <span className="trophy "><i className='fas fa-trophy' style={{trophyOneStyle}}></i></span>
+                                    <span className="trophy"><i className='fas fa-trophy' Style={trophyColor[x]}></i></span>
                                 </div>
                                 <div className="nav-link avatar-div pl-0">
                                     <img className='ml-3 mr-3 mt-3 mb-3 rounded-circle QuestAvatar' 

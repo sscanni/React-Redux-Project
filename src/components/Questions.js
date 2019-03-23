@@ -38,26 +38,35 @@ class Questions extends React.Component {
                                     <h4>Would You Rather ...</h4><br></br>
                                     <div className="radio-buttons">
                                         {
-                                        (this.props.questions[id].optionOne.votes.findIndex(vote => vote === this.props.authedUser) === -1 && 
-                                        this.props.questions[id].optionTwo.votes.findIndex(vote => vote === this.props.authedUser) === -1) ||
-                                        this.props.questions[id].optionOne.votes.findIndex(vote => vote === this.props.authedUser) > -1
-                                            ? <input id="one" value="one" name="poll" type="radio" defaultChecked />
-                                            : <input id="one" value="one" name="poll" type="radio"/>
+                                        // (this.props.questions[id].optionOne.votes.findIndex(vote => vote === this.props.authedUser) === -1 && 
+                                        // this.props.questions[id].optionTwo.votes.findIndex(vote => vote === this.props.authedUser) === -1) ||
+                                        // this.props.questions[id].optionOne.votes.findIndex(vote => vote === this.props.authedUser) > -1
+                                        (this.props.questions[id].optionOne.votes.findIndex(vote => vote === this.props.authedUser) > -1 ||
+                                        this.props.questions[id].optionTwo.votes.findIndex(vote => vote === this.props.authedUser) > -1)
+                                            ? <input id="one" value="one" name="poll" type="radio" defaultChecked disabled/>
+                                            : <input id="one" value="one" name="poll" type="radio" defaultChecked/>
                                         }
                                         <strong> {this.props.questions[id].optionOne.text}</strong>
                                         <br></br>
                                         <br></br>
                                         {
-                                        this.props.questions[id].optionTwo.votes.findIndex(vote => vote === this.props.authedUser) > -1
-                                            ? <input id="two" value="two" name="poll" type="radio" defaultChecked />
-                                            : <input id="two" value="two" name="poll" type="radio"/>
+                                        // this.props.questions[id].optionTwo.votes.findIndex(vote => vote === this.props.authedUser) > -1
+                                        (this.props.questions[id].optionOne.votes.findIndex(vote => vote === this.props.authedUser) > -1 ||
+                                        this.props.questions[id].optionTwo.votes.findIndex(vote => vote === this.props.authedUser) > -1)
+                                            ? <input id="two" value="two" name="poll" type="radio" disabled/>
+                                            : <input id="two" value="two" name="poll" type="radio" />
                                         }
                                         <strong> {this.props.questions[id].optionTwo.text}</strong>
                                         <br></br>
                                         <br></br>
                                     </div>
                                     <Link to="" onClick={(e) => this.checkRadio(e, id)}>
-                                        <button className="btn btn-outline-primary btn-sm btn-block">Submit</button>
+                                        {
+                                        (this.props.questions[id].optionOne.votes.findIndex(vote => vote === this.props.authedUser) > -1 ||
+                                        this.props.questions[id].optionTwo.votes.findIndex(vote => vote === this.props.authedUser) > -1)
+                                            ? <button className="btn btn-outline-primary btn-sm btn-block" disabled>Submit</button>
+                                            : <button className="btn btn-outline-primary btn-sm btn-block">Submit</button>
+                                        }
                                     </Link>
                                 </div>
                             </div>

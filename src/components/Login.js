@@ -27,11 +27,17 @@ class Login extends React.Component {
         }
         this.props.history.push('/')
     }
-    render() {
 
+    componentDidMount() {
         const aUser = null
         const { dispatch } = this.props
         dispatch(setAuthedUser(aUser))
+    }
+    render() {
+
+        // const aUser = null
+        // const { dispatch } = this.props
+        // dispatch(setAuthedUser(aUser))
 
         return (
             <div className="container col-md-4 mt-3">
